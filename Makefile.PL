@@ -2,25 +2,35 @@
 use strict;
 use warnings;
 
-use 5.008005;
+use 5.010;
 
 use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Blah blah blah",
+  "ABSTRACT" => "Concise response constructors for Catalyst controllers",
   "AUTHOR" => "Thomas Sibley <trsibley\@uw.edu>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
   "DISTNAME" => "Catalyst-ResponseHelpers",
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.008005",
+  "MIN_PERL_VERSION" => "5.010",
   "NAME" => "Catalyst::ResponseHelpers",
-  "PREREQ_PM" => {},
+  "PREREQ_PM" => {
+    "Catalyst" => 0,
+    "Encode" => 0,
+    "HTTP::Status" => 0,
+    "IO::String" => 0,
+    "Path::Tiny" => 0,
+    "Safe::Isa" => 0,
+    "URI" => 0,
+    "URI::QueryParam" => 0,
+    "parent" => 0
+  },
   "TEST_REQUIRES" => {
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.01",
+  "VERSION" => "1.00",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -28,7 +38,16 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Test::More" => "0.96"
+  "Catalyst" => 0,
+  "Encode" => 0,
+  "HTTP::Status" => 0,
+  "IO::String" => 0,
+  "Path::Tiny" => 0,
+  "Safe::Isa" => 0,
+  "Test::More" => "0.96",
+  "URI" => 0,
+  "URI::QueryParam" => 0,
+  "parent" => 0
 );
 
 

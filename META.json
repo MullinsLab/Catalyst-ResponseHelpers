@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "Concise response constructors for Catalyst controllers",
    "author" : [
       "Thomas Sibley <trsibley@uw.edu>"
    ],
@@ -37,7 +37,16 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Catalyst" : "0",
+            "Encode" : "0",
+            "HTTP::Status" : "0",
+            "IO::String" : "0",
+            "Path::Tiny" : "0",
+            "Safe::Isa" : "0",
+            "URI" : "0",
+            "URI::QueryParam" : "0",
+            "parent" : "0",
+            "perl" : "5.010"
          }
       },
       "test" : {
@@ -47,6 +56,6 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "1.00"
 }
 
