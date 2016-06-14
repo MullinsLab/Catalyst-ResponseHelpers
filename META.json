@@ -56,6 +56,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/MullinsLab/Catalyst-ResponseHelpers/issues"
+      },
+      "homepage" : "https://github.com/MullinsLab/Catalyst-ResponseHelpers",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/MullinsLab/Catalyst-ResponseHelpers.git",
+         "web" : "https://github.com/MullinsLab/Catalyst-ResponseHelpers"
+      }
+   },
    "version" : "1.00"
 }
 
