@@ -12,7 +12,7 @@ use IO::String;
 use URI;
 use URI::QueryParam;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 =encoding utf-8
 

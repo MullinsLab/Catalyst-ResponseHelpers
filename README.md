@@ -50,9 +50,16 @@ Redirects to the given URL, with an optional custom status.  Status defaults to
 
 ## Ok($c, $status?, $msg?)
 
-Sets a body-less 200 OK response by default, with an optional body via
-["TextPlain"](#textplain) iff a message is provided.  Both the status and message may be
-omitted or provided.  If the message is omitted, a body-less response is set.
+Sets a body-less 204 No Content response by default, switching to a 200 OK with
+a body via ["TextPlain"](#textplain) iff a message is provided.  Both the status and
+message may be omitted or provided.  If the message is omitted, a body-less
+response is set.
+
+Note that if you're using [Catalyst::Action::RenderView](https://metacpan.org/pod/Catalyst::Action::RenderView) and you specify a
+status other than 204 but don't provide a message (e.g. `Ok($c, 200)`),
+RenderView will intercept the response and try to render a template.  This
+probably isn't what you wanted.  A workaround is to use the proper status code
+when sending no content (204) or specify a message (the empty string is OK).
 
 ## Forbidden($c, $msg?)
 
