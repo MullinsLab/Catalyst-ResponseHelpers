@@ -113,9 +113,16 @@ sub RedirectToUrl {
 
 =head2 Ok($c, $status?, $msg?)
 
-Sets a body-less 200 OK response by default, with an optional body via
-L</TextPlain> iff a message is provided.  Both the status and message may be
-omitted or provided.  If the message is omitted, a body-less response is set.
+Sets a body-less 204 No Content response by default, switching to a 200 OK with
+a body via L</TextPlain> iff a message is provided.  Both the status and
+message may be omitted or provided.  If the message is omitted, a body-less
+response is set.
+
+Note that if you're using L<Catalyst::Action::RenderView> and you specify a
+status other than 204 but don't provide a message (e.g. C<Ok($c, 200)>),
+RenderView will intercept the response and try to render a template.  This
+probably isn't what you wanted.  A workaround is to use the proper status code
+when sending no content (204) or specify a message (the empty string is OK).
 
 =cut
 
@@ -123,11 +130,12 @@ sub Ok {
     my ($c, $status, $msg) = @_;
     ($status, $msg) = (undef, $status)
         if @_ == 2 and not is_success($status);
-    $status //= HTTP_OK;
 
     if (defined $msg) {
+        $status //= HTTP_OK;
         TextPlain($c, $status, $msg);
     } else {
+        $status //= HTTP_NO_CONTENT;
         $c->response->status($status);
         $c->response->body(undef);
         $c->detach;
