@@ -60,6 +60,7 @@ our %EXPORT_TAGS = (
         AsJSON
         FromFile
         FromCharString
+        FromByteString
         FromHandle
         Redirect
         RedirectToUrl
@@ -250,6 +251,17 @@ a download.
 An optional arrayref of additional headers may also be provided, which is
 passed through to L</FromHandle>.
 
+=head2 FromByteString($c, $string, $mime_type, $headers?)
+
+Sets a response from the contents of a B<byte> string using the specified
+MIME type.  The character string will B<NOT> be encoded.
+
+The C<Content-Disposition> is set to C<attachment> by default, usually forcing
+a download.
+
+An optional arrayref of additional headers may also be provided, which is
+passed through to L</FromHandle>.
+
 =head2 FromHandle($c, $handle, $mime_type, $headers?)
 
 Sets a response from the contents of the filehandle using the specified MIME
@@ -268,10 +280,15 @@ sub FromFile {
     return FromHandle($c, $file->openr_raw, @_);
 }
 
+sub FromByteString {
+    my ($c, $string) = (shift, shift);
+    my $handle = IO::String->new( $string );
+    return FromHandle($c, $handle, @_);
+}
+
 sub FromCharString {
     my ($c, $string) = (shift, shift);
-    my $handle = IO::String->new( encode_utf8($string) );
-    return FromHandle($c, $handle, @_);
+    return FromByteString($c, encode_utf8($string), @_);
 }
 
 sub FromHandle {

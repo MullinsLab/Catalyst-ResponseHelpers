@@ -1,6 +1,7 @@
 Revision history for Catalyst-ResponseHelpers
 
 {{$NEXT}}
+        - Add a FromByteString() helper analogous to FromCharString()
 
 1.01  2016-08-11 14:15:56 PDT
         - Use 204 No Content when no message is provided to Ok().  204 No
