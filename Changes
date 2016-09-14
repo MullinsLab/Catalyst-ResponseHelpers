@@ -1,6 +1,8 @@
 Revision history for Catalyst-ResponseHelpers
 
 {{$NEXT}}
+
+1.02  2016-09-14 09:37:39 PDT
         - Add a FromByteString() helper analogous to FromCharString()
 
 1.01  2016-08-11 14:15:56 PDT

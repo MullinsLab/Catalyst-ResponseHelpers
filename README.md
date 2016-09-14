@@ -113,6 +113,17 @@ a download.
 An optional arrayref of additional headers may also be provided, which is
 passed through to ["FromHandle"](#fromhandle).
 
+## FromByteString($c, $string, $mime\_type, $headers?)
+
+Sets a response from the contents of a **byte** string using the specified
+MIME type.  The character string will **NOT** be encoded.
+
+The `Content-Disposition` is set to `attachment` by default, usually forcing
+a download.
+
+An optional arrayref of additional headers may also be provided, which is
+passed through to ["FromHandle"](#fromhandle).
+
 ## FromHandle($c, $handle, $mime\_type, $headers?)
 
 Sets a response from the contents of the filehandle using the specified MIME
